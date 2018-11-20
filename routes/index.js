@@ -5,7 +5,7 @@ const clienteCtrl = require('../controllers/cliente')
 const api = express.Router()
 const productoCtrl = require('../controllers/producto')
 const facturaCtrl = require('../controllers/factura')
-const credencialCtrl = require('../controllers/credencial')
+const loginCtrl = require('../controllers/login')
 
 api.get('/cliente', clienteCtrl.getClientes)   
 api.get('/cliente/:clienteId', clienteCtrl.getCliente)
@@ -33,8 +33,8 @@ api.delete('/factura/:facturaId', facturaCtrl.deleteFactura)
 
 
 
-api.post('/signin', credencialCtrl.signIn)   
-api.post('/signup', credencialCtrl.signUp)
+api.post('/signin', loginCtrl.signIn)   
+api.post('/signup', loginCtrl.signUp)
 
 
 module.exports = api
