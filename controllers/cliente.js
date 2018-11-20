@@ -33,6 +33,7 @@ function saveCliente(req, res) {
     cliente.nombre = req.body.nombre
     cliente.apellido = req.body.apellido
     cliente.genero = req.body.genero
+    cliente.password = req.body.password
    
 
     cliente.save((err,clienteStored) =>{

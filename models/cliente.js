@@ -8,6 +8,7 @@ const ClienteSchema = Schema({
     nombre: { type: String, require: true},
     apellido: {type: String, require: true },
     genero:{type: String, enum: ['mujer','hombre']},
+    password:{type:string, require:true}
     
    
 })
