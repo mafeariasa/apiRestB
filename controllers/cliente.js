@@ -29,12 +29,11 @@ function saveCliente(req, res) {
     console.log(req.body)
 
     let cliente = new Cliente()
-    cliente.id_cliente = req.body.id_cliente
-    cliente.user = req.body.user
+    cliente.correo = req.body.correo
     cliente.nombre = req.body.nombre
     cliente.apellido = req.body.apellido
     cliente.genero = req.body.genero
-    cliente.fecha_de_nacimiento = req.body.fecha_de_nacimiento 
+   
 
     cliente.save((err,clienteStored) =>{
         if (err) res.status(500).send({message: `error al salvar en la base de datos: ${err} `})

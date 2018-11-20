@@ -1,6 +1,7 @@
 'use strict'
 
 const Producto = require ('../models/producto')
+const Cliente = require ('../models/cliente')
 
 function getProducto(req, res) {
     let productoId =  req.params.productoId
@@ -18,8 +19,12 @@ function getProductos(req, res) {
     Producto.find({}, (err, productos) => {
         if(err) return res.status(500).send({message: `error al realizar la peticion: ${err} `})
         if(!productos) return res.status(404).send({message:'no existen productos'})
+ 
 
-        res.send(200,{ productos })
+        Cliente.populate(productos, {path:"clienteId"}, (err,productos)=>{
+            res.status(200).send({ productos })
+        })
+        
     })
 }
 
@@ -28,7 +33,7 @@ function saveProducto(req, res) {
     console.log(req.body)
 
     let producto = new Producto()
-    producto.id_cliente = req.body.id_cliente
+    producto.id_producto = req.body.id_producto
     producto.descripcion = req.body.descripcion
     producto.nombre = req.body.nombre
     producto.precio = req.body.precio

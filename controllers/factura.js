@@ -1,6 +1,9 @@
 'use strict'
 
 const Factura = require ('../models/factura')
+const Facturas = require ('../models/factura')
+const Producto = require ('../models/producto')
+const Cliente = require ('../models/cliente')
 
 function getFactura(req, res) {
     let facturaId =  req.params.facturaId
@@ -9,7 +12,13 @@ function getFactura(req, res) {
         if (err) return res.status(500).send({ message:`error al realizar la peticion: ${err} `}) 
         if(!factura) return res.status(404).send({ message:'la factura no existe'})
         
-        res.status(200).send({ factura })
+
+        Producto.populate(factura, {path:"ProductoId"}, (err,factura)=>{
+            Cliente.populate(factura,{path:"ProductoId"}, (err,factura)=>{ 
+                res.status(200).send({ factura })
+            })
+        })
+
     })
 
 }
