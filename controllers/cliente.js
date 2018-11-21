@@ -2,6 +2,7 @@
 
 const Cliente = require ('../models/cliente')
 
+
 function getCliente(req, res) {
     let clienteId =  req.params.clienteId
 

@@ -8,7 +8,7 @@ const ProductSchema = Schema({
     id_producto: {type:String, unique:true, require: true},
     descripcion: String,
     nombre: String,
-    precio: { type: Number, default: 0},
+    precio: String,
 
     clienteId: {type:Schema.Types.ObjectId, ref: Cliente, require: true}
     
