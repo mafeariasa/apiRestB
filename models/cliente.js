@@ -7,8 +7,8 @@ const ClienteSchema = Schema({
     correo: {type: String, unique: true,lowercase:true},
     nombre: { type: String, require: true},
     apellido: {type: String, require: true },
-    genero:{type: String, enum: ['mujer','hombre']},
-    password:{type:String, require:true}
+    genero: {type: String, require: true },
+    password: {type: String, require: true }
     
    
 })
